@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import Header from './components/Header'; // Importe seu componente Header
+import Header from './components/Header';
 import androidKotlinImg from './assets/img/acessibilidade-android-kotlin-ai.png';
 
 function App() {
-  const [currentDate, setCurrentDate] = useState(''); // Estado para armazenar a data formatada
+  const [currentDate, setCurrentDate] = useState('');
 
   const formatCurrentDate = (): string => {
     const today = new Date();
@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     setCurrentDate(formatCurrentDate());
-  }, []); // O array vazio [] garante que a função só seja executada uma vez
+  }, []);
   return (
     <>
       <Header
