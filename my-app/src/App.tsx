@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Header from './components/Header'; // Importe seu componente Header
+import androidKotlinImg from './assets/img/acessibilidade-android-kotlin-ai.png';
 
 function App() {
   const [currentDate, setCurrentDate] = useState(''); // Estado para armazenar a data formatada
@@ -37,7 +38,7 @@ function App() {
             <p className="mt-3">Nossa <strong>questão-problema central</strong> é: Como desenvolvedores podem aplicar, de forma prática e eficiente, os princípios de acessibilidade em aplicações Android modernas usando Kotlin para resolver as barreiras mais comuns para usuários de tecnologias assistivas?</p>
             <p>Para responder a essa questão, este TCC apresenta um guia prático no formato 'problema-solução', detalhando as barreiras mais recorrentes e fornecendo exemplos de código 'antes e depois', acompanhados de explicações técnicas diretas. Nosso objetivo é capacitar a comunidade de desenvolvimento Android a criar aplicativos mais inclusivos e acessíveis.</p>
           </div>
-          <img src="img/acessibilidade-android-kotlin-ai.png" className="img-fluid rounded shadow my-4"
+          <img src={androidKotlinImg} className="img-fluid rounded shadow my-4"
             alt="robô verde mascote do Android   segurando o símbolo universal de acessibilidade, com o logotipo do Kotlin abaixo." />
         </section>
 
