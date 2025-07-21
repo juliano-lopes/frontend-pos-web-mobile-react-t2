@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 interface HeaderProps {
     systemName: string;
@@ -6,6 +6,17 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ systemName, welcomeMessage }) => {
+    const [activeLink, setActiveLink] = useState<string>('#sobre');
+
+    const handleNavLinkClick = (href: string) => {
+        setActiveLink(href);
+
+        const targetElement = document.querySelector(href);
+        if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark container-fluid">
@@ -31,17 +42,32 @@ const Header: React.FC<HeaderProps> = ({ systemName, welcomeMessage }) => {
                     )}
                     <ul className="navbar-nav ms-auto">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="#sobre">
+                            <a
+                                className={`nav-link ${activeLink === '#sobre' ? 'active' : ''}`}
+                                aria-current={activeLink === '#sobre' ? 'page' : undefined}
+                                href="#sobre"
+                                onClick={() => handleNavLinkClick('#sobre')}
+                            >
                                 Sobre o Projeto
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#objetivos">
+                            <a
+                                className={`nav-link ${activeLink === '#objetivos' ? 'active' : ''}`}
+                                aria-current={activeLink === '#objetivos' ? 'page' : undefined}
+                                href="#objetivos"
+                                onClick={() => handleNavLinkClick('#objetivos')}
+                            >
                                 Objetivos
                             </a>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="#contato">
+                            <a
+                                className={`nav-link ${activeLink === '#contato' ? 'active' : ''}`}
+                                aria-current={activeLink === '#contato' ? 'page' : undefined}
+                                href="#contato"
+                                onClick={() => handleNavLinkClick('#contato')}
+                            >
                                 Contato
                             </a>
                         </li>
