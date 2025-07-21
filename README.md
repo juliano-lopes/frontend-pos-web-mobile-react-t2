@@ -1,4 +1,4 @@
-# Guia Prático para Aplicações Android Acessíveis com Kotlin (Front-End - Componente React)
+# Guia Prático para Aplicações Android Acessíveis com Kotlin (Front-End - Componente React)  
 
 Este projeto contém a parte de front-end desenvolvida em React com TypeScript e Bootstrap, focada na implementação de um componente para o TCC "Guia Prático para o Desenvolvimento de Aplicações Android Acessíveis com Kotlin".
 
