@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import androidKotlinImg from './assets/img/acessibilidade-android-kotlin-ai.png';
+import AccessibilityResourcesCatalog from './components/AccessibilityResourcesCatalog';
+import { initialResources } from './data/resourcesData';
 
 function App() {
   const [currentDate, setCurrentDate] = useState('');
@@ -84,6 +86,7 @@ function App() {
             </div>
           </div>
         </section>
+        <AccessibilityResourcesCatalog resourcesData={initialResources} catalogTitle="Recursos de Acessibilidade" />
       </main>
 
       <footer id="contato" className="bg-dark text-white text-center py-4 mt-5">
