@@ -3,10 +3,12 @@ import Header from './components/Header';
 import androidKotlinImg from './assets/img/acessibilidade-android-kotlin-ai.png';
 import AccessibilityResourcesCatalog from './components/AccessibilityResourcesCatalog';
 import { initialResources } from './data/resourcesData';
+import type { FeedbackData } from './types/feedback';
+import FeedbackForm from './components/FeedbackForm';
 
 function App() {
   const [currentDate, setCurrentDate] = useState('');
-
+  const [submittedFeedback, setSubmittedFeedback] = useState<FeedbackData | null>(null);
   const formatCurrentDate = (): string => {
     const today = new Date();
     const options: Intl.DateTimeFormatOptions = {
@@ -21,6 +23,21 @@ function App() {
   useEffect(() => {
     setCurrentDate(formatCurrentDate());
   }, []);
+
+  useEffect(() => {
+    if (submittedFeedback) {
+      const timer = setTimeout(() => {
+        setSubmittedFeedback(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submittedFeedback]);
+
+  const handleFeedbackSubmit = (data: FeedbackData) => {
+    console.log("Feedback recebido:", data);
+    setSubmittedFeedback(data);
+  };
+
   return (
     <>
       <Header
@@ -87,6 +104,18 @@ function App() {
           </div>
         </section>
         <AccessibilityResourcesCatalog resourcesData={initialResources} catalogTitle="Recursos de Acessibilidade" />
+        <section id="feedback" className="container my-5">
+          <div className="row justify-content-center">
+            <div className="col-md-8 col-lg-6">
+              {submittedFeedback && (
+                <div className="alert alert-success text-center mb-4" role="alert">
+                  Obrigado, {submittedFeedback.name}! Seu feedback foi enviado com sucesso.
+                </div>
+              )}
+              <FeedbackForm onFeedbackSubmit={handleFeedbackSubmit} />
+            </div>
+          </div>
+        </section>
       </main>
 
       <footer id="contato" className="bg-dark text-white text-center py-4 mt-5">
